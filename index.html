@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hello Landing Works - A modern, clean landing page">
+    <meta name="keywords" content="landing, page, hello, works">
+    <meta name="author" content="Hello Landing Works">
+    
+    <title>Hello Landing Works</title>
+    
+    <!-- Preconnect to Google Fonts for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Link to external stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👋</text></svg>">
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Background elements for visual effects -->
+    <div class="background-elements">
+        <div class="floating-element floating-element--1"></div>
+        <div class="floating-element floating-element--2"></div>
+        <div class="floating-element floating-element--3"></div>
+    </div>
+    
+    <!-- Main container -->
+    <main id="main-content" class="main-container">
+        <div class="content-wrapper">
+            <!-- Hero section -->
+            <section class="hero-section" role="banner">
+                <div class="hero-content">
+                    <h1 class="hero-title" tabindex="0">
+                        <span class="hero-title__text">hello_landing_works</span>
+                        <span class="hero-title__cursor" aria-hidden="true">|</span>
+                    </h1>
+                    
+                    <p class="hero-subtitle" tabindex="0">
+                        Modern. Clean. Professional.
+                    </p>
+                    
+                    <!-- Call-to-action button -->
+                    <div class="cta-container">
+                        <button class="cta-button" type="button" aria-label="Get started with our services">
+                            <span class="cta-button__text">Get Started</span>
+                            <span class="cta-button__icon" aria-hidden="true">→</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Decorative elements -->
+                <div class="hero-decoration" aria-hidden="true">
+                    <div class="decoration-circle decoration-circle--1"></div>
+                    <div class="decoration-circle decoration-circle--2"></div>
+                    <div class="decoration-circle decoration-circle--3"></div>
+                </div>
+            </section>
+            
+            <!-- Features section -->
+            <section class="features-section" aria-label="Features">
+                <div class="features-grid">
+                    <div class="feature-card" tabindex="0">
+                        <div class="feature-icon" aria-hidden="true">⚡</div>
+                        <h3 class="feature-title">Fast</h3>
+                        <p class="feature-description">Lightning-fast loading and smooth performance</p>
+                    </div>
+                    
+                    <div class="feature-card" tabindex="0">
+                        <div class="feature-icon" aria-hidden="true">📱</div>
+                        <h3 class="feature-title">Responsive</h3>
+                        <p class="feature-description">Perfect on all devices and screen sizes</p>
+                    </div>
+                    
+                    <div class="feature-card" tabindex="0">
+                        <div class="feature-icon" aria-hidden="true">✨</div>
+                        <h3 class="feature-title">Modern</h3>
+                        <p class="feature-description">Clean design with contemporary aesthetics</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-content">
+            <p class="footer-text">
+                &copy; 2024 Hello Landing Works. Made with 
+                <span class="footer-heart" aria-label="love">❤️</span>
+            </p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript for enhanced interactions -->
+    <script>
+        // Enhanced cursor animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const cursor = document.querySelector('.hero-title__cursor');
+            if (cursor) {
+                setInterval(() => {
+                    cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+                }, 800);
+            }
+            
+            // Smooth scroll for skip link
+            const skipLink = document.querySelector('.skip-link');
+            if (skipLink) {
+                skipLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector('#main-content').focus();
+                });
+            }
+            
+            // Add hover effects to feature cards
+            const featureCards = document.querySelectorAll('.feature-card');
+            featureCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+            
+            // CTA button interaction
+            const ctaButton = document.querySelector('.cta-button');
+            if (ctaButton) {
+                ctaButton.addEventListener('click', function() {
+                    // Add ripple effect
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 150);
+                    
+                    // You can add actual functionality here
+                    console.log('CTA button clicked - ready for your implementation!');
+                });
+            }
+            
+            // Floating elements animation
+            const floatingElements = document.querySelectorAll('.floating-element');
+            floatingElements.forEach((element, index) => {
+                const duration = 3000 + (index * 1000);
+                const delay = index * 500;
+                
+                setTimeout(() => {
+                    element.style.animation = `float ${duration}ms ease-in-out infinite`;
+                }, delay);
+            });
+        });
+        
+        // Intersection Observer for animations
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+            
+            // Observe elements for animation
+            document.querySelectorAll('.feature-card, .hero-content').forEach(el => {
+                observer.observe(el);
+            });
+        }
+    </script>
+</body>
+</html>
