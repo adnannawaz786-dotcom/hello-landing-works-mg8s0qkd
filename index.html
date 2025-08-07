@@ -2,25 +2,28 @@
 <html>
 <head>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-    <div class="content">
-        hello_landing_works
+    <div id="content" class="content">
+        <div id="default-content">hello_landing_works</div>
+        <div id="discover-content" class="hidden">this is discover page</div>
     </div>
     <nav class="bottom-nav">
-        <a href="#" class="nav-item active">
-            <i class="fas fa-home"></i>
+        <a href="#" class="nav-item">
+            <i class="nav-icon home-icon"></i>
             <span>Home</span>
         </a>
-        <a href="#" class="nav-item">
-            <i class="fas fa-compass"></i>
+        <a href="#" class="nav-item" id="discover-link">
+            <i class="nav-icon discover-icon"></i>
             <span>Discover</span>
         </a>
-        <a href="#" class="nav-item">
-            <i class="fas fa-user"></i>
-            <span>Account</span>
-        </a>
     </nav>
+    <script>
+        document.getElementById('discover-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('default-content').classList.add('hidden');
+            document.getElementById('discover-content').classList.remove('hidden');
+        });
+    </script>
 </body>
 </html>
